@@ -1,0 +1,62 @@
+textarea#description:focus {
+    border-color: #39fcff;
+    outline: 0;
+    box-shadow: inset 0 1px 2px rgb(0 0 0 / 8%), 0 0 5px rgb(57 252 255 / 50%);
+}
+.wizard.wizard-circle>.steps>ul>li.current:after, .wizard.wizard-circle>.steps>ul>li.current~li:before, .wizard.wizard-circle>.steps>ul>li.current~li:after {
+    background-color: #fff;
+}
+.wizard > .steps > ul > li a {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.wizard > .steps {
+    margin: 28px 0 0 0;
+}
+.wizard.wizard-circle > .steps .step {
+    width: 30px;
+    height: 30px;
+    line-height: 50px;
+    border: 5px solid #41bbd66a;
+    font-size: 1.3rem;
+    border-radius: 50%;
+}
+.wizard > .steps > ul > li.done .step {
+    background-color: #41bbd6;
+    border-color: #41bbd6;
+    color: #fff;
+}
+.wizard > .steps > ul > li.current .step {
+    border-color: #41bbd6;
+    background-color: #fff;
+    color: #41bbd6;
+}
+.wizard.wizard-circle > .steps > ul > li.current ~ li:before {
+    background-color: #41bbd66a;
+}
+.wizard.wizard-circle > .steps > ul > li.current ~ li:after {
+    background-color: #41bbd66a;
+}
+.wizard.wizard-circle > .steps > ul > li.current:after {
+    background-color: #41bbd66a;
+}
+.wizard.wizard-circle > .steps > ul > li:before, .wizard.wizard-circle > .steps > ul > li:after {
+    top: 13px;
+    width: 50%;
+    height: 5px;
+    background-color: #41bbd6;
+}
+.wizard > .steps > ul > li a {
+    position: relative;
+    padding-top: 40px;
+    display: block;
+}
+
+
+.wizard > .steps > ul > li a > p {
+    /* margin-left: -16px; */
+    padding-right: 16px;
+}
+.display-5 {
+    font-size: 2.5rem;
+}

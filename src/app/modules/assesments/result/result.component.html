@@ -1,0 +1,125 @@
+<div *ngIf="!loading" class="application">
+    <!-- BEGIN: Header-->
+    <div class="header d-flex justify-content-between">
+        <div class="brand d-flex">
+            <div class="logo">
+                <img class="brand-logo" alt="stack admin logo"
+                    src="/assets/app-assets/images/logo/assessment-logo-dark.png">
+                <img class="brand-logo" alt="stack admin logo"
+                    src="/assets/app-assets/images/logo/assessment-logo-text-dark.png">
+            </div>
+        </div>
+        <div class="heading text-center">
+            <h5 class="mb-0">{{this.quiz['courseTitle']}}</h5>
+            <p class="mb-0"><small>{{this.quiz['gradeTitle']}}</small></p>
+        </div>
+        
+        <div class="submission">
+            <div class="status w-100">
+            </div>
+            <div class="icon">
+            </div>
+        </div>
+    </div>
+    <!-- END: Header-->
+
+    <div>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <ul class="result-icon-boxes">
+                                <li>
+                                    <div class="icon">
+                                        <i class="bx bx-award"></i>
+                                    </div>
+                                    <div class="info">
+                                        <h4>Obtained Marks: <strong>{{this.quiz['result']}}</strong></h4>
+                                        <p>Total Marks: {{this.quiz['totalMarks']}}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="bx bx-x"></i>
+                                    </div>
+                                    <div class="info">
+                                        <h4>Wrong: <strong>{{this.quiz['wrong']}}</strong></h4>
+                                        <p>Total Questions: {{this.quiz['totalQuestions']}}</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="bx bx-time"></i>
+                                    </div>
+                                    <div class="info">
+                                        <h4>{{formatedSpendTime}}</h4>
+                                        <p>Total Time Spend</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <i class="bx bx-check-circle"></i>
+                                    </div>
+                                    <div class="info">
+                                        <h4>Total Tries: <strong>{{this.quiz['tries']}}</strong></h4>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="marks-wrap">
+                                <div class="marks">
+                                    <div class="number">
+                                        {{this.quiz['result']}}
+                                    </div>
+                                    <div class="label">
+                                        Marks <br />
+                                        Out of {{this.quiz['totalMarks']}}
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="result-actions">
+                                <li>
+                                    <a href="javascript:void(0)" [routerLink]="['/assessment/builder']">
+                                        <span class="icon">
+                                            <i class="bx bx-list-check"></i>
+                                        </span>
+                                        <span class="label themeColor">
+                                            Create New Assessment
+                                        </span>
+                                    </a>
+                                </li>
+                                <li *ngIf="this.quiz['result'] != this.quiz['totalMarks']">
+                                    <a href="javascript:void(0)" (click)="attemptWrongQuestions();">
+                                        <span class="icon">
+                                            <i class="bx bx-x"></i>
+                                        </span>
+                                        <span class="label themeColor">
+                                            Attempt Wrong Questions Only
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" [routerLink]="['/assessments/attempt/', quizId]">
+                                        <span class="icon">
+                                            <i class="bx bx-refresh"></i>
+                                        </span>
+                                        <span class="label themeColor">
+                                            Take Assessment Again
+                                        </span>
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loading" class="row text-center justify-content-center" style="margin: 100px;">
+    <img src="assets/app-assets/images/loading2.gif" alt="ascasc">
+</div>

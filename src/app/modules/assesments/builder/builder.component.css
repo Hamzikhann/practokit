@@ -1,0 +1,177 @@
+.app-content .wizard.wizard-circle>.steps>ul>li.current:after, .app-content .wizard.wizard-circle>.steps>ul>li.current~li:before, .app-content .wizard.wizard-circle>.steps>ul>li.current~li:after {
+    background-color: #fff;
+}
+
+.app-content .wizard > .steps > ul > li a {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.app-content .wizard.wizard-circle > .steps > ul > li:before, .app-content .wizard.wizard-circle > .steps > ul > li:after {
+    top: 24px;
+}
+.app-content .wizard > .steps {
+    margin: 28px 0;
+}
+
+.app-content .content .row-content {
+    padding: 16px 12px;
+    background: #d3d3d380;
+    border-radius: 4px;
+}
+
+.app-content .course .badge {
+    margin: 4px 8px 4px 0;
+    padding: 6px 10px;
+}
+
+.app-content .content .table-bordered th, .app-content .content .table-bordered td {
+    border: 1px solid #424e6a;
+}
+.app-content .content .search {
+    margin: 12px 0;
+}
+.app-content .content .tags {
+    margin: 16px 0;
+}
+.app-content .content .tags .badge {
+    padding: 12px 20px;
+    font-size: 14px;
+    margin: 12px 12px 0 0;
+    background: #fff;
+    color: #424e6a;
+    border: 1px solid #dedede;
+}
+.app-content .content .tags .badge-selected {
+    background: #dedede;
+}
+.app-content .content .tags .badge-selected .feather {
+    margin-left: 8px;
+}
+.app-content .content .heading,
+.app-content .content .tags .heading
+{
+    margin: 12px 0;
+    font-weight: bold;
+}
+
+.main-heading {
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.badge {
+    cursor: pointer;
+}
+.badge.badge-selected {
+    cursor: default;
+}
+.badge.badge-selected i {
+    cursor: pointer;
+}
+
+.card-class {
+    box-shadow: none;
+    border: 1px solid #dedede;
+    margin: 12px 0;
+}
+.card-class .card-body {
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+.card-class .card-body .head {
+    margin-bottom: 0;
+}
+
+.actions .btn {
+    width: 120px;
+    margin: 12px 12px 0 0;
+}
+.actions .btn.btn-default { 
+    background: #dedede;
+}
+.actions .btn.btn-primary {
+    font-weight: 600;
+}
+
+.difficulties {
+    margin: 12px 0;
+}
+.difficulties .card-class .card-body .count input {
+    padding: 0;
+    height: 22px;
+    border: 0;
+    border-bottom: 1px solid #dedede;
+    border-radius: 0;
+}
+.icon .icon-header {
+    font-size: 28px;
+    margin: 12px 0;
+}
+
+.review {
+    margin: 12px 12px 24px 12px;
+}
+.review .review-heading {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0 !important;
+}
+.review .review-heading h6 {
+    font-weight: 500;
+}
+.review .review-heading .icon span {
+    font-size: 16px;
+    margin-right: 12px;
+}
+.review .row-type {
+    margin: 8px 0;
+}
+.review .review-content {
+    display: flex;
+    justify-content: center;
+}
+.review .review-content .card {
+    justify-content: center;
+    margin: 0 12px 0 0;
+    padding: 10px 14px;
+}
+.review .review-content .card .card-content {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+.review .review-content .card .card-content p {
+    margin-bottom: 0;
+}
+.review .review-content .badge {
+    margin: 0 20px 0 0;
+    padding: 4px 8px;
+    background: transparent;
+    border: 1px solid #424e6a;
+    color: #424e6a;
+    border-radius: 32px;
+}
+.review .review-content .card-content .list-group-item {
+    padding: 8px 16px;
+}
+.review .review-content .card-content .list-group-item .badge {
+    padding: 4px 12px !important;
+}
+
+.d-unset {
+    display: unset !important;
+}
+
+.signOut {
+    min-width: 160px;
+    font-size: large;
+    text-align: center;
+    padding: 6px 0;
+}
+
+.pl-5px{
+    padding-right: 5px;
+}

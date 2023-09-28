@@ -1,0 +1,170 @@
+<div *ngIf="!loading" class="content-wrapper">
+    <div class="content-header row">
+        <div class="content-header-left col-md-8 col-12 mb-2">
+            <h3 class="content-header-title mb-0">Assessment</h3>
+            <div class="row breadcrumbs-top">
+                <div class="breadcrumb-wrapper col-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/']">Home</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)"
+                                [routerLink]="['/assessments']">Assessments</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)"
+                                [routerLink]="['/assessments/submissions']">Submissions</a></li>
+                        <li class="breadcrumb-item">{{quiz.title? quiz.title:'Practice'}}</li>
+                        <li class="breadcrumb-item active">Result</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="content-header-right col-md-4 col-12 mb-md-0 mb-2">
+            <div class="row">
+                <div class="col-md-4 col-12"></div>
+                <div class="col-md-4 col-12"></div>
+                <div class="col-md-4 col-12"></div>
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+        <section class="assessment-view">
+            <div class="row">
+                <div class="col-md-3 col-12">
+                    <div class="card">
+                        <div class="card-body p-1">
+                            <div class="d-flex align-items-center">
+                                <div class="icon">
+                                    <i class="bx bx-award" style="font-size: 44px;"></i>
+                                </div>
+                                <div class="ml-1">
+                                    <p class="mb-0 text-bold"><small class=" text-bold">Marks</small></p>
+                                    <h4 class="mb-0">{{result.result}} / {{result.totalMarks}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body p-1">
+                            <div class="d-flex align-items-center">
+                                <div class="icon">
+                                    <i class="bx bx-time" style="font-size: 44px;"></i>
+                                </div>
+                                <div class="ml-1">
+                                    <p class="mb-0 text-bold"><small class=" text-bold">Total Time Spend</small></p>
+                                    <h4 class="mb-0">{{result.timeSpend}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body p-1">
+                            <div class="d-flex align-items-center">
+                                <div class="icon">
+                                    <i class="bx bx-check-circle" style="font-size: 44px;"></i>
+                                </div>
+                                <div class="ml-1">
+                                    <p class="mb-0"><small class=" text-bold">Total Tries</small></p>
+                                    <h4 class="mb-0">{{result.tries}} times</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-12">
+                    <div class="marks-wrap">
+                        <div class="marks">
+                            <div class="mx-2">
+                                <img src="assets/app-assets/images/{{badgeEarned}} Badge.png" width="200px"
+                                    height="auto" alt="">
+                            </div>
+                            <div>
+                                <div class="d-flex align-items-center">
+                                    <div class="number">
+                                        {{result.result}}
+                                    </div>
+                                    <div class="label">
+                                        Marks <br />
+                                        Out of {{quiz.totalMarks}}
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="mb-1">
+                                        <a class="mx-1" [routerLink]="['/assessments/create']">
+                                            <span class="icon"><i class="bx bx-list-check"></i></span>
+                                            <span class=""> Create New </span>
+                                        </a>
+                                        <a class="mx-1" [routerLink]="['/assessments/attempt/', quiz.id]">
+                                            <span class="icon"><i class="bx bx-refresh"></i></span>
+                                            <span class=""> Attempt Again </span>
+                                        </a>
+                                    </p>
+                                    <p *ngIf="result.result != result.totalMarks">
+                                        <a class="mx-1" [routerLink]="['/assessments/attempt/', quiz.id, 'wrong', 'questions']">
+                                            <span class="icon"><i class="bx bx-x"></i></span>
+                                            <span class=""> Attempt Wrong Questions Only</span>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-1">
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <div class="row mb-2">
+                            <div class="col-md-3 col-12">
+                                <h5 class="font-weight-bold">Assessment Title</h5>
+                                <p class="leading-para mb-1">
+                                    <span class="feather icon-clipboard mr-1"></span>{{quiz.title?
+                                    quiz.title:'Practice'}}
+                                </p>
+                            </div>
+                            <div class="col-md-3 col-12">
+                                <h5 class="font-weight-bold">{{quiz.course.class.title}}</h5>
+                                <p class="leading-para mb-1">
+                                    <span class="feather icon-book mr-1"></span>{{quiz.course.title}}
+                                </p>
+                            </div>
+                            <div class="col-md-3 col-12">
+                                <h5 class="font-weight-bold">Total Marks</h5>
+                                <p class="leading-para mb-1"><span
+                                        class="feather icon-star mr-1"></span>{{quiz.totalMarks}}
+                                </p>
+                            </div>
+                            <div class="col-md-3 col-12">
+                                <h5 class="font-weight-bold">Total Time</h5>
+                                <p class="leading-para mb-1"><span
+                                        class="feather icon-clock mr-1"></span>{{quiz.totalTime}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-12">
+                                <h5 class="font-weight-bold">No. of Questions</h5>
+                                <p class="leading-para mb-1"><span
+                                        class="feather icon-hash mr-1"></span>{{quiz.totalQuestions}}
+                                </p>
+                            </div>
+                            <div class="col-md-3 col-12">
+                                <h5 class="font-weight-bold">Questions Types</h5>
+                                <div class="leading-para mb-1">
+                                    <div class="badge badge-info mr-05px" *ngFor="let type of quiz.types">{{type}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <h5 class="font-weight-bold">Topics or Tags</h5>
+                                <div class="topics">
+                                    <div class="badge badge-primary mr-1 disable-text-selection"
+                                        *ngFor="let tag of quiz.tags">{{tag.title}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- <div class="row text-center justify-content-center" style="margin-top: 100px;">
+    <img src="assets/app-assets/images/loading.gif" alt="">
+</div> -->

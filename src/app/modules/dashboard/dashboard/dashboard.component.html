@@ -1,0 +1,221 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div *ngIf="!loading" class="row">
+            <div class="col-md-12 col-12 p-0">
+                <!-- Welcom Text -->
+                <div class="d-flex">
+                    <div class="col-9">
+                        <div class="welcome-text">
+                            <h1 class="font-weight-bold">Welcome to the Practokit!</h1>
+                            <p class="leading-para mb-0">
+                                Here you will push yourself to challenge your skills with custom made worksheets,
+                                thousands of problems to choose from, and daily updates!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="d-flex float-right zoom">
+                            <img src="assets/app-assets/images/need help 1.png" width="auto" alt="" class="float-right">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graph -->
+                <div class="view">
+                    <div class="col-12">
+                        <div class="d-flex">
+                            <div class="col-3 p-0">
+                                <div class="head-text" style="margin: 0 0 20px 0;">
+                                    <h2 class="font-weight-bold">Assessments</h2>
+                                </div>
+                                <div class="mb-3">
+                                    <div>
+                                        <p style="font-size: 24px;font-weight: bold;">
+                                            <span style="font-size: 20px; font-weight: 200;">
+                                                Attempted
+                                            </span>
+                                            {{this.currentMonthAssessments}}
+                                            <span style="font-size: 20px; font-weight: 200;">
+                                                / This Month
+                                            </span>
+                                        </p>
+                                        <p>
+                                            <span *ngIf="percentage >= 0" style="color: #4ad13a;">
+                                                <i class="feather icon-arrow-up-right"></i>
+                                                +{{percentage}}%
+                                            </span>
+                                            <span *ngIf="percentage < 0" class="danger">
+                                                <i class="feather icon-arrow-down-right"></i>
+                                                {{percentage}}%
+                                            </span>
+                                            than last month
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <h5 class="m-0 font-weight-lighter">
+                                                <span class="badge badge-pill badge-danger badge-up total">.</span>
+                                                Total
+                                            </h5>
+                                        </li>
+                                        <li>
+                                            <h5 class="m-0 font-weight-lighter">
+                                                <span class="badge badge-pill badge-danger badge-up attempted">.</span>
+                                                Attempted
+                                            </h5>
+                                        </li>
+                                        <li>
+                                            <h5 class="m-0 font-weight-lighter">
+                                                <span
+                                                    class="badge badge-pill badge-danger badge-up not-attempted">.</span>
+                                                Not Attempted
+                                            </h5>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <apx-chart [chart]="chartOptions.chart" [plotOptions]="chartOptions.plotOptions"
+                                    [dataLabels]="chartOptions.dataLabels" [stroke]="chartOptions.stroke"
+                                    [series]="chartOptions.series" [xaxis]="chartOptions.xaxis"
+                                    [fill]="chartOptions.fill" [legend]="chartOptions.legend"></apx-chart>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Questions Count -->
+                <div class="d-flex">
+                    <div class="col-12">
+                        <div class="head-text" style="margin: 0 0 30px 0;">
+                            <h2 class="font-weight-bold">Questions Count</h2>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="card-view">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="media-body text-left">
+                                                    <h3 class="warning mb-0 very-easy">{{questionCount.veryEasy}}</h3>
+                                                    <span>Very Easy</span>
+                                                </div>
+                                                <div class="align-self-center"><img
+                                                        src="assets/app-assets/images/very-easy.png" width="70" alt=""
+                                                        class="float-right"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-view">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="media-body text-left">
+                                                    <h3 class="warning mb-0 easy">{{questionCount.easy}}</h3>
+                                                    <span>Easy</span>
+                                                </div>
+                                                <div class="align-self-center"><img
+                                                        src="assets/app-assets/images/easy.png" width="70" alt=""
+                                                        class="float-right"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-view">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="media-body text-left">
+                                                    <h3 class="warning mb-0 medium">{{questionCount.medium}}</h3>
+                                                    <span>Medium</span>
+                                                </div>
+                                                <div class="align-self-center"><img
+                                                        src="assets/app-assets/images/medium.png" width="70" alt=""
+                                                        class="float-right"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-view">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="media-body text-left">
+                                                    <h3 class="warning mb-0 hard">{{questionCount.hard}}</h3>
+                                                    <span>Hard</span>
+                                                </div>
+                                                <div class="align-self-center"><img
+                                                        src="assets/app-assets/images/hard.png" width="70" alt=""
+                                                        class="float-right"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-view">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="media-body text-left">
+                                                    <h3 class="warning mb-0 very-hard">{{questionCount.veryHard}}</h3>
+                                                    <span>Very Hard</span>
+                                                </div>
+                                                <div class="align-self-center"><img
+                                                        src="assets/app-assets/images/very-hard.png" width="70" alt=""
+                                                        class="float-right"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="loading" class="row text-center justify-content-center" style="margin-top: 100px;">
+            <img src="assets/app-assets/images/loading2.gif" alt="">
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Right Side Bar (Will Use Later) -->
+<!-- <div class="col-md-2 col-12">
+                <div class="col-12 card subscription">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 p-0">
+                                <div class="plan-title">
+                                    <h5>Subscription Plan</h5>
+                                    <div class="d-flex justify-content-between">
+                                        <h4 class="font-weight-bolder align-self-center">PREMIUM</h4>
+                                        <div class="d-flex expiry-date">
+                                            <div>
+                                                <div>Expire:</div>
+                                                <div><p class="m-0"> 08/25</p></div>
+                                                <div>MM/YY</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="project-title mt-1">
+                                    <h3 class="font-weight-bolder float-right mb-0">PRACTOKIT</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->

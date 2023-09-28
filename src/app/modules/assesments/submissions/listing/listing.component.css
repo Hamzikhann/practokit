@@ -1,0 +1,9 @@
+th, td {
+    text-align: left;
+    white-space: normal;
+    cursor: default;
+}
+
+th.actions, td.actions {
+    text-align: center;
+}

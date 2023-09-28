@@ -1,0 +1,104 @@
+.main-menu {
+    width: 170px;
+}
+li.nav-item.logo {
+    margin: 1rem !important;
+}
+ul#main-menu-navigation {
+    text-align: center;
+    text-align: -webkit-center;
+}
+li.nav-item
+{
+    width: 120px;
+    height: 100px;
+    justify-content: space-evenly;
+    padding: 18px 10px !important;
+    border-radius: 12px;
+    display: flex;
+    margin: 1.875rem;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-color: #f5f6f8;
+    box-shadow: inset 0 0 30px #404e6733;
+}
+
+li.nav-item{
+    cursor: pointer;
+}
+li.nav-item:hover {
+    box-shadow: none;
+    background-color: #fff;
+}
+li.nav-item.active {
+    box-shadow: 0 0px 0px 0 rgb(62 57 107 / 18%), 0 0px 15px 0 rgb(62 57 107 / 22%);
+    background-color: #fff;
+    color: #2e8bc0;
+}
+li.nav-item.logo:hover {
+    background-color: #fff0;
+}
+
+li.nav-item.active i.feather.icon-home {
+    font-weight: bold;
+}
+
+li.nav-item.active .menu-title {
+    font-size: 1rem;
+    font-weight: 900;
+    line-height: 1.45;
+}
+
+li.nav-item.logo {
+    box-shadow: none;
+    padding: 0 !important;
+}
+
+.navbar-brand {    
+    margin-right: 0 !important;
+}
+img.brand-logo.logo {
+    width: 100%;
+    height: auto;
+}
+.nav-item i {
+    margin-right: 0 !important;
+}
+
+.word-break{
+    white-space: pre-wrap;
+    line-height: normal !important;
+}
+
+
+
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+
+/* Custom Scrollbar using CSS */
+.custom-scrollbar-css {
+    overflow-y: auto;
+    height: 100vh;
+}
+
+/* scrollbar width */
+.custom-scrollbar-css::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* scrollbar track */
+.custom-scrollbar-css::-webkit-scrollbar-track {
+  background: #eee;
+}
+
+/* scrollbar handle */
+.custom-scrollbar-css::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background-color: #00d0ff;
+  background-image: linear-gradient(to top, #41bbd6 100%, #00d0ff 0%);
+}

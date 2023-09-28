@@ -1,0 +1,52 @@
+<!-- BEGIN: Main Menu-->
+<div class="main-menu menu-fixed menu-accordion" data-scroll-to-active="true">
+    <div class="main-menu-content">
+        <div class="custom-scrollbar-css">
+            <ul class="navigation navigation-main" id="main-menu-navigation">
+                <li class="nav-item logo">
+                    <a class="navbar-brand" href="javascript:void(0)">
+                        <img class="brand-logo logo" src="/assets/app-assets/images/logo/logo1-dark-medium.svg">
+                    </a>
+                </li>
+                <li class="nav-item" [class.active]="router.url == '/'" [routerLink]="['/']">
+                    <i class="feather icon-home"></i>
+                    <span class="menu-title word-break">Dashboard</span>
+                </li>
+                <li class="nav-item" [class.active]="router.url == '/assessments'" [routerLink]="['/assessments']">
+                    <i class="feather icon-list"></i>
+                    <span class="menu-title word-break">Assessments</span>
+                </li>
+                <li class="nav-item" [class.active]="router.url.includes('assessments/create')"
+                [routerLink]="['/assessments/create']">
+                    <i class="feather icon-clipboard"></i>
+                    <span class="menu-title word-break">Create Assessment</span>
+                </li>
+                <li class="nav-item" [class.active]="router.url.includes('assessments/submissions')"
+                [routerLink]="['/assessments/submissions']">
+                    <i class="feather icon-book-open"></i>
+                    <span class="menu-title word-break">Submissions</span>
+                </li>
+                <li class="nav-item" [class.active]="router.url.includes('report-a-problem')"
+                [routerLink]="['/report-a-problem']">
+                    <i class="feather icon-alert-triangle"></i>
+                    <span class="menu-title word-break">Report a Problem</span>
+                </li>
+                <li class="nav-item" [class.active]="router.url.includes('users/profile')"
+                [routerLink]="['/users/profile']">
+                    <i class="feather icon-user"></i>
+                    <span class="menu-title word-break">View Profile</span>
+                </li>
+                <li class="nav-item" [class.active]="router.url.includes('users/change/password')"
+                [routerLink]="['/users/change/password']">
+                    <i class="feather icon-lock"></i>
+                    <span class="menu-title word-break">Change Password</span>
+                </li>
+                <li class="nav-item" (click)="logOut()">
+                    <i class="feather icon-power"></i>
+                    <span class="menu-title word-break">Logout</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- END: Main Menu-->

@@ -1,0 +1,251 @@
+/*================================================================================
+	Item Name: Stack - Responsive Admin Theme
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+body {
+    background: url('/assets/app-assets/images/assessment-poster-bg.jpg');
+    background-position: center;
+    background-size: cover;
+}
+.font-weight-500 {
+    font-weight: 500;
+}
+.text-transform-capitalize {
+    text-transform: capitalize;
+}
+.text-transform-uppercase {
+    text-transform: uppercase;
+}
+.text-transform-lowercase {
+    text-transform: lowercase;
+}
+.btn-primary {
+    background-color: #41bbd6 !important;
+    border-color: #41bbd6;
+}
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+    border-color: #424e6ae0 !important;
+    background-color: #424e6ae0 !important;
+    color: #FFF!important;
+}
+.progress .progress-bar {
+    background-color: #424e6a;
+}
+.pointer {
+    cursor: pointer;
+}
+.formControlPositionIconRight {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+}
+.ml-p15 {
+    margin-left: 15px;
+}
+.disable-text-selection {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.mr-p5 {
+    margin-right: 5px;
+}
+
+
+.breadcrumb-item.active {
+    color: #404e67; 
+    font-weight: bold;
+}
+.navbar-light .main-menu-content .navbar-nav li {
+    margin: 0 12px;
+}
+
+.horizontal-menu .navbar-light ul#main-menu-navigation>li.active>a {
+    border-bottom: 2px solid #00b5b8;
+    background: #fff;
+}
+
+/* ============================ Calendar Styles ============================ */
+
+thead {
+    background: #41bbd6;
+    color: #fff;
+    border: 1px solid #41bbd6;
+}
+.fc .fc-toolbar-title {
+    font-size: 1em !important;
+    padding: 12px 0;
+    font-weight: bold;
+}
+.fc-event-title:before {
+    content: "\025cf" !important;
+    color: #fbc02d;
+}
+.fc-h-event {
+    background: transparent !important;
+    border: 0 !important;
+}
+.fc .fc-button-group>.fc-button {
+    padding: 4px 8px;
+    color: #000;
+    border-radius: 12px;
+    background: #fff;
+    font-size: 10px;
+}
+.fc .fc-button-primary:disabled {
+    display: none;
+}
+
+.fc .fc-daygrid-day-frame {
+    min-height: unset; 
+}
+.fc-theme-standard td, .fc-theme-standard th {
+    height: 20px !important;
+}
+.fc .fc-daygrid-day-frame {
+    min-height: 50% !important;
+    position: relative;
+}
+table.fc-scrollgrid-sync-table {
+    height: 168px !important;
+}
+.fc .fc-daygrid-body-unbalanced .fc-daygrid-day-events {
+    position: absolute !important;
+    margin-top: 0 !important;
+    min-height: 1em !important;
+    bottom: -6px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fc .fc-daygrid-day-top {
+    justify-content: center !important;
+}
+.fc .fc-daygrid-event-harness {
+    display: table-cell;
+}
+.fc-direction-ltr .fc-daygrid-event.fc-event-end, .fc-direction-rtl .fc-daygrid-event.fc-event-start {
+    margin-right: 0;
+}
+.fc-daygrid-block-event .fc-event-time, .fc-daygrid-block-event .fc-event-title {
+    padding: 0;
+    width: 8px;
+}
+.fc .fc-col-header-cell-cushion {
+    font-size: 12px;
+}
+.fc .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 1em !important;
+}
+.fc-theme-standard .fc-scrollgrid, .fc-theme-standard td, .fc-theme-standard th {
+    border: 0 !important;
+}
+.fc .fc-scrollgrid-section-liquid>td {
+    padding: 12px 0 0 0;
+}
+.fc .fc-button-primary {
+    text-transform: capitalize !important;
+    padding: 2px 4px !important;
+}
+.fc-today-button {
+    background: #f5f7fa !important;
+    color: #404e67 !important;
+    border: 1px solid #dedede !important;
+}
+
+#toast-container>.toast-info {
+    background-color: #00b5b8 !important;
+}
+.ng-autocomplete {
+    width: 100% !important;
+}
+.steric {
+    color: rgb(240, 86, 89) !important;
+    margin-left: 5px;
+    font-size: 14px;
+    margin-right: 5px;
+}
+.fc .fc-scroller-liquid-absolute, .fc .fc-scroller {
+    overflow: hidden !important;
+}
+.fc .fc-scrollgrid-section, .fc .fc-scrollgrid-section>td, 
+.fc .fc-scrollgrid-section table, .fc .fc-daygrid-body, 
+.fc .fc-scrollgrid-section-body table, 
+.fc .fc-scrollgrid-section-footer table {
+    width: 100% !important;
+}
+.placeholder {
+    display: block;
+    text-align: center;
+}
+.form-row {
+    margin-bottom: 5px;
+}
+.avatar img {
+    width: 32px !important;
+    height: 32px !important;
+    width: unset;
+    max-width: unset;
+}
+
+.table-img {
+    width: 32px;
+    height: 32px;
+}
+.fc .fc-daygrid-day.fc-day-today {
+    background-color: rgb(251 186 118) !important;
+}
+.fc .fc-highlight {
+    background: #fbba7673 !important;
+}
+/* ====== end ====== */
+
+
+.card {
+    border-radius: 12px;
+    box-shadow: 0 10px 20px 0 rgb(62 57 107 / 18%), 0 2px 9px 0 rgb(62 57 107 / 22%);
+}
+
+span.badge-up {
+    right: 0px;
+}
+
+.content-header {
+    padding: 40px 0px 0px 0px;
+}
+
+/*    Pagination       */
+.ngx-pagination {
+    padding-left: 0 !important;
+}
+.ngx-pagination .current {
+    background: #41bbd6 !important;
+    border-radius: 4px !important;
+}
+/*      end      */
+
+.badge-primary.theme {
+    background-color: #41bbd6 !important;
+}
+
+.w-150px {
+    width: 150px;
+}

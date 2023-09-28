@@ -1,0 +1,72 @@
+.head-text {
+    margin-top: 4px;
+}
+.very-easy {    
+    color: #1da513!important;
+}
+.easy {    
+    color: #9fcc00!important;
+}
+.medium {    
+    color: #dccf00!important;
+}
+.hard {    
+    color: #feae01!important;
+}
+.very-hard {    
+    color: #fe2b00!important;
+}
+.view {
+    margin: 25px 0 0 0;
+}
+.badge {
+    margin-right: 5px;
+    color: #fb9db2;
+    background-color: #fb9db2;
+}
+.badge-up {
+    top: 0;
+    right: 0;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+ul > li{
+    margin-bottom: 1rem;
+}
+.badge.badge-pill.badge-danger.badge-up.total{
+    color: #41bbd6;
+    background-color: #41bbd6;
+}
+.badge.badge-pill.badge-danger.badge-up.not-attempted{
+    color: #fb9db2;
+    background-color: #fb9db2;
+}
+.badge.badge-pill.badge-danger.badge-up.attempted{
+    color: #13e29d;
+    background-color: #13e29d;
+}
+.welcome-text {
+    padding: 40px 0 0 0;
+}
+.card-view {
+    flex: 0 0 19%;
+}
+.subscription {
+    background-color: #616265c9;
+    color: #fff;
+}
+.expiry-date {
+    padding-top: 2px;
+}
+path {
+    fill: #2e8bc0;
+}
+.zoom {
+    transition: transform .2s; /* Animation */
+    cursor: pointer;
+}
+.zoom:hover {
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}

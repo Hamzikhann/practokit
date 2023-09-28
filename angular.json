@@ -12,22 +12,34 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
+
           "options": {
+            "allowedCommonJsDependencies": ["lodash"],
             "outputPath": "dist/assesment-tool-user",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.css"
+              "src/assets/app-assets/css/vendors.min.css",
+              "src/assets/app-assets/css/bootstrap.css",
+              "src/assets/app-assets/css/bootstrap-extended.css",
+              "src/assets/app-assets/css/colors.css",
+              "src/assets/app-assets/css/components.css",
+              "src/assets/app-assets/css/colors-palette-gradient.css",
+              "src/assets/app-assets/css/wizard.css",
+              "node_modules/ng-selectize/assets/selectize.css",
+              "src/assets/custom.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/app-assets/js/vendors.min.js",
+              "src/assets/app-assets/js/jquery.sticky.js",
+              "src/assets/app-assets/js/app-menu.js",
+              "src/assets/app-assets/js/app.js",
+              "node_modules/ng-selectize/assets/selectize.standalone.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -77,18 +89,10 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         }

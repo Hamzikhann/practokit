@@ -1,0 +1,68 @@
+<!-- BEGIN: Header-->
+<div class="header-navbar navbar-expand-sm navbar navbar-horizontal navbar-dark d-flex justify-content-between">
+    <div class="navbar-container">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a class="navbar-brand" href="javascript:void(0)">
+                    <img class="brand-logo logo" src="/assets/app-assets/images/logo/medium.svg">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-container">
+        <ul class="nav navbar-nav float-right">
+            <!-- User Data -->
+            <li class="dropdown dropdown-user nav-item">
+                <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                    <div class="avatar avatar-online">
+                        <img src="/assets/app-assets/images/portrait/small/avatar-s-1.png" alt="avatar"
+                            onerror="this.src='/assets/app-assets/images/portrait/small/avatar-s-1.png'">
+                    </div>
+                    <span class="user-name">{{currentUser.firstName + ' ' + currentUser.lastName}}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/users/profile']">
+                        <i class="feather icon-user"></i> View Profile
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)" [routerLink]="['/users/change/password']">
+                        <i class="fa fa-key"></i> Change Password
+                    </a>
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="logOut()">
+                        <i class="feather icon-power"></i> Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- Menu -->
+<div
+    class="header-navbar navbar-expand-sm navbar navbar-horizontal navbar-static navbar-light navbar-shadow menu-border d-flex justify-content-center">
+    <div class="navbar-container main-menu-content">
+        <ul class="nav navbar-nav" id="main-menu-navigation">
+            <li class="nav-item" [class.active]="router.url == '/'">
+                <a class="nav-link" href="javascript:void(0)" [routerLink]="['/']">
+                    <i class="feather icon-home"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item" [class.active]="router.url == '/assessments'">
+                <a class="nav-link" href="javascript:void(0)" [routerLink]="['/assessments']">
+                    <i class="feather icon-list"></i><span>Assessments</span>
+                </a>
+            </li>
+            <li class="nav-item" [class.active]="router.url.includes('assessments/create')">
+                <a class="nav-link" href="javascript:void(0)" [routerLink]="['/assessments/create']">
+                    <i class="feather icon-clipboard"></i><span>Create Assessment</span>
+                </a>
+            </li>
+            <li class="nav-item" [class.active]="router.url.includes('assessments/submissions')">
+                <a class="nav-link" href="javascript:void(0)" [routerLink]="['/assessments/submissions']">
+                    <i class="feather icon-book-open"></i>
+                    <span>Submissions</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- END: Header-->

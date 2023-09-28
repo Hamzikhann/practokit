@@ -1,0 +1,97 @@
+<div *ngIf="!loading" class="content-wrapper">
+    <div class="content-header row">
+        <div class="content-header-left col-md-6 col-12 mb-2">
+            <h3 class="content-header-title mb-0">Submissions</h3>
+            <div class="row breadcrumbs-top">
+                <div class="breadcrumb-wrapper col-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/']">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)"
+                                [routerLink]="['/assessments']">Assesssments</a></li>
+                        <li class="breadcrumb-item active">Submissions</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="content-header-right col-md-6 col-12 mb-md-0 mb-2">
+            <div class="row">
+                <div class="col-md-4 col-12"></div>
+                <div class="col-md-4 col-12"></div>
+                <div class="col-md-4 col-12">
+                    <div class="input-group mb-1">
+                        <input type="text" class="form-control" placeholder="Search by Title" name="search" id="search"
+                            [(ngModel)]="search" (ngModelChange)="searchAssessment()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-detached">
+        <div class="content-body">
+            <section class="row all-contacts">
+                <div class="col-12">
+                    <div *ngIf="filteredAssessments.length" class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="users-contacts"
+                                        class="table table-white-space table-hover table-striped row-grouping display no-wrap icheck text-center mb-0 border-blue-grey border-lighten-5">
+                                        <thead>
+                                            <tr>
+                                                <th width="20%">Attempted At</th>
+                                                <th width="18%" class="message text-break">Title</th>
+                                                <th width="12%" class="actions">Result</th>
+                                                <th width="15%" class="actions">Total Marks</th>
+                                                <th width="20%" class="actions">Course/Class</th>
+                                                <th width="20%" class="actions">CREATED BY</th>
+                                                <th width="5%" class="actions">ACTIONS</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr
+                                                *ngFor="let assessment of filteredAssessments | paginate: { itemsPerPage: perPagePagination, currentPage: p };let i = index">
+                                                <td class="align-middle">{{assessment.createdAt}}</td>
+                                                <td class="message text-break text-justify align-middle">
+                                                    {{assessment.title}}</td>
+                                                <td class="align-middle text-center ">
+                                                    {{assessment.quizSubmissions[0].result}}</td>
+                                                <td class="align-middle text-center text-capitalize">
+                                                    {{assessment.quizSubmissions[0].totalMarks}}</td>
+                                                <td class="align-middle text-center text-capitalize">
+                                                    {{assessment.course.title}}
+                                                    <small><br>{{assessment.course.class.title}}</small>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    {{assessment.user.firstName ? assessment.user.firstName: ''}}
+                                                    {{assessment.user.lastName? assessment.user.lastName : ''}}
+                                                </td>
+                                                <td class="align-middle actions">
+                                                    <a data-toggle="tooltip" id="tooltip" title="View Result"
+                                                        [routerLink]="['/assessments/submissions/result', assessment.id]">
+                                                        <i class="fa fa-eye"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <pagination-controls class="inbox-pagination" *ngIf="filteredAssessments.length > perPagePagination"
+                        (pageChange)="p = $event"></pagination-controls>
+                    <div *ngIf="!filteredAssessments.length" class="placeholder mt-5">
+                        <img src="assets/app-assets/images/no-data.png" alt="">
+                        <p>No Submission found</p><br>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loading" class="content-wrapper">
+    <div *ngIf="loading" class="row text-center justify-content-center" style="margin-top: 100px;">
+        <img src="assets/app-assets/images/loading2.gif" alt="">
+    </div>
+</div>

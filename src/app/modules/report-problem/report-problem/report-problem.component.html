@@ -1,0 +1,167 @@
+<div class="content-wrapper">
+    <div class="content-header row">
+        <div class="content-header-left col-md-6 col-12 mb-2">
+            <h3 class="content-header-title mb-0">{{viewListing? 'Reported Problems':'Report a Problem'}}</h3>
+            <div class="row breadcrumbs-top">
+                <div class="breadcrumb-wrapper col-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)" [routerLink]="['/']">Dashboard</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">{{viewListing? 'Reported Problems':'Report a Problem'}}</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="content-header-right col-md-6 col-12 mb-md-0 mb-2">
+            <div class="row">
+                <div class="col-md-6 col-12"></div>
+                <div *ngIf="!viewListing" class="col-md-6 col-12">
+                    <div class="actions">
+                        <a class="btn btn-primary btn-block" href="javascript:void(0)" 
+                            (click)="this.viewListing = true; getReportedProblems();">
+                            <i class="feather icon-list mr-p5"></i> View Reported Problems
+                        </a>
+                    </div>
+                </div>
+                <div *ngIf="viewListing && !loading" class="col-md-6 col-12">
+                    <div class="media float-right">
+                        <div class="media-left media-middle">
+                            <span><i class="feather icon-archive display-5 mr-1"></i></span>
+                        </div>
+                        <div class="media-right text-right">
+                            <h3 class="m-0">{{reportedProblems.length}}</h3>
+                            <span class="text-muted">Total</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-body">
+        <div *ngIf="!viewListing" class="card">
+            <div class="card-content">
+                <div class="card-body">
+                    <form class="form">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="projectinput1">Subject</label>
+                                        <select class="custom-select form-control" name="subjectList" id="subjectList" [(ngModel)]="subject">
+                                            <option value="" selected>Select subject</option> 
+                                            <option *ngFor="let subject of subjectList" value="{{subject}}">{{subject}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="projectinput2">Description</label>
+                                        <textarea type="text" rows="7" id="description" class="form-control" placeholder="Explain your problem" 
+                                            name="description" [(ngModel)]="description"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-12 align-self-center">
+                                    <div class="row">
+                                        <div class="col-md-12 col-12">
+                                            <h5>Thanks, your feedback matters!</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12"></div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="actions">
+                                                <a class="btn btn-danger btn-block" href="javascript:void(0)" (click)="reportProblem()">
+                                                    Report
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="viewListing && !loading && reportedProblems.length">
+            <div *ngFor="let problem of reportedProblems" class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <form class="form">
+                            <div class="form-body">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <div>
+                                            <div class="d-flex">
+                                                <h2 class="font-weight-bold">Subject: <span class="font-weight-normal">{{problem.subject}}</span></h2>
+                                            </div>
+                                            <p class="text-justify">{{problem.description}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="float-right float-right text-right">
+                                            <div>
+                                                <h4 class="font-weight-bold">Reported At</h4>
+                                                <h4><span class="font-weight-normal">{{problem.date}}</span></h4>
+                                                <h4><span class="font-weight-normal">{{problem.time}}</span></h4>
+                                                <h6>{{problem.ago}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="icons-tab-steps wizard-circle wizard">
+                                        <div class="steps">
+                                            <ul role="tablist">
+                                                <li role="tab" class="first" 
+                                                    [ngClass]="{'current': problem.status == 'not-fixed', 
+                                                        'done': problem.status == 'viewed' || problem.status == 'in-progress' || problem.status == 'fixed'}"
+                                                    >
+                                                    <a href="javascript:void(0)"><span class="step"></span>
+                                                        <p class="m-0">Reported</p></a>
+                                                </li>
+                                                <li role="tab" class="" 
+                                                    [ngClass]="{'current': problem.status == 'viewed', 
+                                                    'done': problem.status == 'in-progress' || problem.status == 'fixed'}"
+                                                >
+                                                    <a href="javascript:void(0)"><span class="step"></span>
+                                                        <p class="m-0">Viewed</p></a>
+                                                </li>
+                                                <li role="tab" class="" 
+                                                    [ngClass]="{'current': problem.status == 'in-progress', 'done': problem.status == 'fixed'}"
+                                                >
+                                                    <a href="javascript:void(0)"><span class="step"></span>
+                                                        <p class="m-0">In-Progress</p></a>
+                                                </li>
+                                                <li role="tab" class="" 
+                                                    [ngClass]="{'done': problem.status == 'fixed'}"
+                                                >
+                                                    <a href="javascript:void(0)"><span class="step"></span>
+                                                        <p class="m-0">Fixed</p></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="viewListing && loading" class="content-wrapper">
+            <div *ngIf="loading" class="row text-center justify-content-center" style="margin-top: 100px;">
+                <img src="assets/app-assets/images/loading2.gif" alt="">
+            </div>
+        </div>
+        <div *ngIf="viewListing && !loading && !reportedProblems.length" class="placeholder mt-5">
+            <img src="assets/app-assets/images/no-data.png" alt="">
+            <p>No Reported Problem found</p><br>
+        </div>
+    </div>
+</div>

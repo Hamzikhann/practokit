@@ -1,0 +1,347 @@
+<div class="application">
+    <!-- BEGIN: Content-->
+    <div class="app-content center-layout">
+        <div class="content-wrapper">
+            <div class="content-header row">
+                <div class="content-header-left col-md-8 col-12 mb-2">
+                    <h3 class="content-header-title mb-0">New Assessment</h3>
+                    <div class="row breadcrumbs-top">
+                        <div class="breadcrumb-wrapper col-12">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0)"
+                                        [routerLink]="['/']">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="javascript:void(0)"
+                                        [routerLink]="['/assessments']">Assessments</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript:void(0)"
+                                        [routerLink]="['/assessments/create']">Create</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-header-right col-md-4 col-12 mb-md-0 mb-2">
+                    <div class="row">
+                        <div class="col-md-4 col-12"></div>
+                        <div class="col-md-4 col-12"></div>
+                        <div class="col-md-4 col-12"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3 class="main-heading">Build your own Assessment</h3>
+                    <h3><small>Select and fill up the following fields to make your own assessment.</small></h3>
+                </div>
+            </div>
+            <div class="content-body">
+                <section id="icon-tabs">
+                    <div class="row">
+                        <div class="col-12">
+                            <div *ngIf="!loading" class="icons-tab-steps wizard-circle wizard">
+                                <div class="steps">
+                                    <ul role="tablist">
+                                        <li role="tab" [ngClass]="{'current': step === 1, 'done': step > 1}"
+                                            class="first">
+                                            <a href="javascript:void(0)">
+                                                <span class="step"><i class="step-icon fa fa-book"></i></span>
+                                                Class & Subject
+                                            </a>
+                                        </li>
+                                        <li role="tab" [ngClass]="{'current': step === 2, 'done': step > 2}">
+                                            <a href="javascript:void(0)">
+                                                <span class="step"><i class="step-icon fa fa-stack-overflow"></i></span>
+                                                Difficulty Levels
+                                            </a>
+                                        </li>
+                                        <li role="tab" [ngClass]="{'current': step === 3, 'done': step > 3}">
+                                            <a href="javascript:void(0)">
+                                                <span class="step"><i class="step-icon fa fa-tags"></i></span>
+                                                Topics or Tags
+                                            </a>
+                                        </li>
+                                        <li role="tab" [ngClass]="{'current': step === 4, 'done': step > 4}">
+                                            <a href="javascript:void(0)">
+                                                <span class="step"><i class="step-icon fa fa-question"></i></span>
+                                                Review & Create
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="content">
+
+                                    <!-- Class & Subject -->
+                                    <div class="row" *ngIf="step == 1">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h6 class="heading">Class & Subject<br>
+                                                        <small>Select from the below mentioned list of Subjects or type
+                                                            keyword for the specific one.</small>
+                                                    </h6>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="search">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Search Class or Subject by Title"
+                                                                name="searchCourse" id="searchCourse"
+                                                                [(ngModel)]="title"
+                                                                (ngModelChange)="SearchClassCourse()">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-primary" type="button">
+                                                                    <i class="feather icon-search"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="filteredGradeList.length" class="col-md-12">
+                                            <div *ngFor="let grade of filteredGradeList" class="card card-class">
+                                                <div class="card-body">
+                                                    <p class="head"><strong>{{grade.title}}</strong></p>
+                                                    <div class="course">
+                                                        <a *ngFor="let course of grade.courses"
+                                                            href="javascript:void(0)"
+                                                            (click)="setSelectedCourse(grade, course); getTags(course.id); goToStep(2)">
+                                                            <span
+                                                                class="badge theme badge-primary">{{course.title}}</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="!filteredGradeList.length" class="col-md-12">
+                                            <div class="row text-center justify-content-center">
+                                                <div>
+                                                    <img src="assets/app-assets/images/noData.png" alt="">
+                                                    <p>No Class & Subject found</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--Difficulty Levels -->
+                                    <div class="row" *ngIf="step == 2">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h6 class="heading">Difficulty Levels<br>
+                                                        <small>How many questions do you want for the specific
+                                                            level?</small>
+                                                    </h6>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="icon text-right mr-1">
+                                                        <span class="icon-header fa fa-stack-overflow"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 difficulties">
+                                            <div class="row">
+                                                <div *ngFor="let diff of difficultyList; let i = index"
+                                                    class="col-md-4">
+                                                    <div class="card card-class">
+                                                        <div class="card-body">
+                                                            <p class="head">
+                                                                <strong>{{diff.title}}</strong>
+                                                            </p>
+                                                            <div class="count">
+                                                                <input type="number" class="form-control w-150px"
+                                                                    placeholder="No. of Questions"
+                                                                    [(ngModel)]="difficulties[i].count"
+                                                                    oninput="validity.valid||(value=0);" min="0"
+                                                                    max="50">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="actions">
+                                                <button class="btn btn-default" (click)="goToStep(1);">Back</button>
+                                                <button class="btn btn-primary"
+                                                    (click)="validDifficulties()">Next</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--Topics or Tags -->
+                                    <div class="row" *ngIf="step == 3 && !tagLoading">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <h6 class="heading">Topics or Tags<br>
+                                                        <small>Select from the below mentioned list of topics or type
+                                                            the search
+                                                            for the specific one.</small>
+                                                    </h6>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="search">
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Search Tags or Topics" name="searchTag"
+                                                                id="searchTag" [(ngModel)]="tagTitle"
+                                                                (ngModelChange)="SearchTags()">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-primary" type="button">
+                                                                    <i class="feather icon-search"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="tags">
+                                                <!-- [ngClass]="selectedTags.includes(tag.id)? 'badge-selected': ''" -->
+                                                <span *ngFor="let tag of filteredTagList" class="badge badge-primary"
+                                                    [ngClass]="topics.includes(tag.id)? 'badge-selected': ''"
+                                                    (click)="selectTag(tag)">{{tag.title}} <i
+                                                        *ngIf="topics.includes(tag.id)"
+                                                        (click)="deleteButtonClicked=true;deleteTag(tag.id);"
+                                                        class="feather icon-x-circle"></i></span>
+                                            </div>
+                                            <div *ngIf="!filteredTagList.length"
+                                                class="row text-center justify-content-center">
+                                                <div>
+                                                    <img src="assets/app-assets/images/noData.png" alt="">
+                                                    <p>No Tag found</p>
+                                                </div>
+                                            </div>
+                                            <div class="actions">
+                                                <button class="btn btn-default" (click)="goToStep(2);">Back</button>
+                                                <button class="btn btn-primary" [disabled]="!selectedTags.length"
+                                                    (click)="getReviewData();goToStep(4);">Next</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="tagLoading && step == 3" class="row text-center justify-content-center"
+                                        style="margin: 100px;">
+                                        <img src="assets/app-assets/images/loading2.gif" alt="ascasc">
+                                    </div>
+
+                                    <!--Reeview & Create -->
+                                    <div class="row" *ngIf="step == 4">
+                                        <div class="col-md-12">
+                                            <h6 class="heading text-center">Review Assessment<br>
+                                                <small>Before creating an assessment, kindly review it or go to
+                                                    the previous steps if you want to change anything.</small>
+                                            </h6>
+                                        </div>
+                                        <div class="col-md-12 review">
+                                            <div class="row">
+                                                <div class="row-type col-md-12">
+                                                    <div class="review-heading">
+                                                        <div class="icon">
+                                                            <span class="fa fa-book"></span>
+                                                        </div>
+                                                        <h6 class="title">Class & Subject</h6>
+                                                    </div>
+                                                    <div class="review-content">
+                                                        <div class="card">
+                                                            <div class="card-content">
+                                                                <p>{{selectedCourse.grade.title}} -
+                                                                    {{selectedCourse.title}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row-type col-md-12">
+                                                    <div class="review-heading">
+                                                        <div class="icon">
+                                                            <span class="fa fa-stack-overflow"></span>
+                                                        </div>
+                                                        <h6 class="title">Number of Questions</h6>
+                                                    </div>
+                                                    <div class="review-content align-items-center">
+                                                        <div *ngFor="let diff of reviewDifficulties" class="card">
+                                                            <div class="card-content">
+                                                                <span
+                                                                    class="badge badge-pill float-right">{{diff.count}}</span>
+                                                                <p>{{diff.title}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <a href="javascript:void(0)" (click)="goToStep(2);"><i
+                                                                class="feather icon-edit pl-5px"></i>edit</a>
+                                                    </div>
+                                                </div>
+                                                <div class="row-type col-md-12">
+                                                    <div class="review-heading">
+                                                        <div class="icon">
+                                                            <span class="fa fa-tags"></span>
+                                                        </div>
+                                                        <h6 class="title">Topics</h6>
+                                                    </div>
+                                                    <div class="row review-content align-items-center">
+                                                        <div *ngFor="let tag of selectedTags" class="card mb-1">
+                                                            <div class="card-content">
+                                                                <p>{{tag.title}}<span class="pl-1 pointer"><i
+                                                                            (click)="deleteTag(tag.id);"
+                                                                            class="feather icon-x-circle"></i></span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <a href="javascript:void(0)" (click)="goToStep(3);"><i
+                                                                class="feather icon-plus pl-5px"></i>add more</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="actions text-center">
+                                                <button class="btn btn-default" (click)="goToStep(3);">Back</button>
+                                                <button class="btn btn-primary w-25" data-toggle="modal"
+                                                    data-target="#confirmStartQuiz">Create Assessment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div *ngIf="loading" class="row text-center justify-content-center" style="margin: 100px;">
+                                <img src="assets/app-assets/images/loading2.gif" alt="ascasc">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- END: Content-->
+
+    <div class="modal fade" id="confirmStartQuiz" *ngIf="validQuiz" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Instructions:</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times-circle"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li class="text-danger">Do not close the Tab or redirect to another link before
+                            submitting the quiz, Otherwise QUIZ WILL BE LOST.</li>
+                        <li>Each Question have different time. When question`s time will over then question will be
+                            LOCKED;
+                            You can not select/change option.</li>
+                        <li>When question`s time will over, Next question will be shown after 3 seconds.</li>
+                        <li class="text-danger">The quiz will automatically submitted when all question time is over.
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer align-self-center">
+                    <button type="button" class="btn btn-primary" (click)="confirmStartQuiz()"
+                        data-dismiss="modal">Start
+                        Assessment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
