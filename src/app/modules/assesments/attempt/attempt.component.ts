@@ -5,6 +5,7 @@ import { QuizService } from 'src/app/services/quiz/quiz.service';
 import { SubmissionService } from 'src/app/services/submission/submission.service';
 import * as moment from 'moment';
 import { environment } from '../../../../environments/environment';
+import { HelperService } from 'src/app/services/helper/helper.service';
 
 // import { Dropbox } from 'dropbox';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -70,7 +71,7 @@ export class AttemptComponent implements OnInit {
     private toastr: ToastrService,
     private quizService: QuizService,
     private submissionService: SubmissionService,
-
+    private helperService: HelperService,
     private sanitizer: DomSanitizer
   ) {}
 
@@ -150,6 +151,15 @@ export class AttemptComponent implements OnInit {
       this.questions[this.currentQuestionIndex].questionsAttribute
         ?.statementImage
     ) {
+      this.helperService
+        .getFileSafeUrl({
+          file: this.questions[this.currentQuestionIndex].questionsAttribute
+            .statementImage,
+        })
+        .subscribe((res: any) => {
+          const response = res.body;
+          this.safeUrl = response.safeUrl;
+        });
       // dbx
       //   .filesDownload({
       //     path: this.questions[this.currentQuestionIndex].questionsAttribute
@@ -168,6 +178,14 @@ export class AttemptComponent implements OnInit {
 
     var options = this.questions[this.currentQuestionIndex].questionsOptions;
     if (options[0]?.image) {
+      this.helperService
+        .getFileSafeUrl({
+          file: options[0]?.image,
+        })
+        .subscribe((res: any) => {
+          const response = res.body;
+          this.optionsSafeUrl[0] = response.safeUrl;
+        });
       // dbx
       //   .filesDownload({ path: options[0].image })
       //   .then((res: any) => {
@@ -181,6 +199,14 @@ export class AttemptComponent implements OnInit {
       //   });
     }
     if (options[1]?.image) {
+      this.helperService
+        .getFileSafeUrl({
+          file: options[1]?.image,
+        })
+        .subscribe((res: any) => {
+          const response = res.body;
+          this.optionsSafeUrl[1] = response.safeUrl;
+        });
       // dbx
       //   .filesDownload({ path: options[1].image })
       //   .then((res: any) => {
@@ -194,6 +220,14 @@ export class AttemptComponent implements OnInit {
       //   });
     }
     if (options[2]?.image) {
+      this.helperService
+        .getFileSafeUrl({
+          file: options[2]?.image,
+        })
+        .subscribe((res: any) => {
+          const response = res.body;
+          this.optionsSafeUrl[2] = response.safeUrl;
+        });
       // dbx
       //   .filesDownload({ path: options[2].image })
       //   .then((res: any) => {
@@ -207,6 +241,14 @@ export class AttemptComponent implements OnInit {
       //   });
     }
     if (options[3]?.image) {
+      this.helperService
+        .getFileSafeUrl({
+          file: options[3]?.image,
+        })
+        .subscribe((res: any) => {
+          const response = res.body;
+          this.optionsSafeUrl[3] = response.safeUrl;
+        });
       // dbx
       //   .filesDownload({ path: options[3].image })
       //   .then((res: any) => {
@@ -220,6 +262,14 @@ export class AttemptComponent implements OnInit {
       //   });
     }
     if (options[4]?.image) {
+      this.helperService
+        .getFileSafeUrl({
+          file: options[4]?.image,
+        })
+        .subscribe((res: any) => {
+          const response = res.body;
+          this.optionsSafeUrl[4] = response.safeUrl;
+        });
       // dbx
       //   .filesDownload({ path: options[4].image })
       //   .then((res: any) => {
@@ -233,6 +283,14 @@ export class AttemptComponent implements OnInit {
       //   });
     }
     if (options[5]?.image) {
+      this.helperService
+        .getFileSafeUrl({
+          file: options[5]?.image,
+        })
+        .subscribe((res: any) => {
+          const response = res.body;
+          this.optionsSafeUrl[5] = response.safeUrl;
+        });
       // dbx
       //   .filesDownload({ path: options[5].image })
       //   .then((res: any) => {
@@ -246,6 +304,14 @@ export class AttemptComponent implements OnInit {
       //   });
     }
     if (options[6]?.image) {
+      this.helperService
+        .getFileSafeUrl({
+          file: options[6]?.image,
+        })
+        .subscribe((res: any) => {
+          const response = res.body;
+          this.optionsSafeUrl[6] = response.safeUrl;
+        });
       // dbx
       //   .filesDownload({ path: options[6].image })
       //   .then((res: any) => {
@@ -259,6 +325,14 @@ export class AttemptComponent implements OnInit {
       //   });
     }
     if (options[7]?.image) {
+      this.helperService
+        .getFileSafeUrl({
+          file: options[7]?.image,
+        })
+        .subscribe((res: any) => {
+          const response = res.body;
+          this.optionsSafeUrl[7] = response.safeUrl;
+        });
       // dbx
       //   .filesDownload({ path: options[7].image })
       //   .then((res: any) => {
@@ -275,6 +349,15 @@ export class AttemptComponent implements OnInit {
     if (
       this.questions[this.currentQuestionIndex].questionsAttribute?.hintFile
     ) {
+      this.helperService
+        .getFileSafeUrl({
+          file: this.questions[this.currentQuestionIndex].questionsAttribute
+            .hintFile,
+        })
+        .subscribe((res: any) => {
+          const response = res.body;
+          this.hintSafeUrl = response.safeUrl;
+        });
       // dbx
       //   .filesDownload({
       //     path: this.questions[this.currentQuestionIndex].questionsAttribute
