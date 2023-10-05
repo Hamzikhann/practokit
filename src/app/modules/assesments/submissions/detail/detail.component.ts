@@ -42,10 +42,9 @@ export class DetailComponent implements OnInit {
   }
 
   getSubmissionDetail(quizId: string | null) {
-    console.log(quizId);
+    // console.log(quizId);
     this.assessmentService.getQuizResult(quizId).subscribe((res) => {
       this.result = res.body;
-      console.log(this.result);
       this.result.timeSpend =
         Math.floor(this.result.timeSpend / 60) +
         ' min ' +

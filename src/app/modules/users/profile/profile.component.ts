@@ -27,7 +27,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     let user: any = localStorage.getItem('user');
     this.currentUser = JSON.parse(user);
-    console.log(this.currentUser);
     this.updateProfile.firstName = this.currentUser.firstName;
     this.updateProfile.lastName = this.currentUser.lastName;
   }
@@ -56,7 +55,6 @@ export class ProfileComponent implements OnInit {
 
       this.userService.updateProfile(payload).subscribe((res: any) => {
         const user: any = res.body['user'];
-        console.log(user);
         this.toastr.success('Profile Updated successfully');
         this.authService.storeUserData(null, user);
         this.authService.setUser(user);

@@ -32,7 +32,6 @@ export class SigninComponent implements OnInit {
         password: this.password,
       };
       this.authService.login(payload).subscribe((res: any) => {
-        console.log(res);
         this.toastr.success('Login Successful.');
         this.authService.storeUserData(res.body['token'], res.body['user']);
         this.authService.setUser(res.body['user']);

@@ -43,7 +43,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.authService.getUser().subscribe((res) => {
-      this.currentUser = res;
+      // console.log(res);
+      this.currentUser = JSON.parse(res);
     });
     this.getQuestionCount();
   }

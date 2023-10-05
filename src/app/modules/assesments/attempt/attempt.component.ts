@@ -158,6 +158,7 @@ export class AttemptComponent implements OnInit {
         })
         .subscribe((res: any) => {
           const response = res.body;
+
           this.safeUrl = response.safeUrl;
         });
       // dbx

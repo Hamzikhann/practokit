@@ -60,8 +60,8 @@
                                                     {{assessment.questionsPool.length}}
                                                 </td>
                                                 <td class="align-middle text-center">
-                                                    {{assessment.user.firstName ? assessment.user.firstName: ''}}
-                                                    {{assessment.user.lastName? assessment.user.lastName : ''}}
+                                                    {{assessment.user?.firstName ? assessment.user.firstName: ''}}
+                                                    {{assessment.user?.lastName? assessment.user.lastName : ''}}
                                                 </td>
                                                 <td class="align-middle actions">
                                                     <a *ngIf="assessment.quizSubmissions.length == 0"

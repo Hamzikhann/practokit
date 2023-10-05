@@ -22,7 +22,7 @@ export class ListingComponent implements OnInit {
 
     this.assessmentService.getAssessments().subscribe((res) => {
       this.assessments = res.body;
-      console.log(this.assessments);
+      // console.log(this.assessments);
       this.assessments.forEach(
         (element: {
           createdAt: moment.MomentInput;
