@@ -14,15 +14,17 @@ export class ListingComponent implements OnInit {
   perPagePagination: number = 10;
   search: string = '';
   p: number = 1;
-
+  currentUser: any;
   constructor(private assessmentService: QuizService) {}
 
   ngOnInit(): void {
     this.loading = true;
-
+    let user: any = localStorage.getItem('user');
+    this.currentUser = JSON.parse(user);
+    // console.log(this.currentUser.id);
     this.assessmentService.getAssessments().subscribe((res) => {
       this.assessments = res.body;
-      // console.log(this.assessments);
+      console.log(this.assessments);
       this.assessments.forEach(
         (element: {
           createdAt: moment.MomentInput;
