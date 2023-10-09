@@ -21,10 +21,12 @@ export class ListingComponent implements OnInit {
     this.loading = true;
     let user: any = localStorage.getItem('user');
     this.currentUser = JSON.parse(user);
+    console.log(this.currentUser);
     // console.log(this.currentUser.id);
     this.assessmentService.getAssessments().subscribe((res) => {
       this.assessments = res.body;
       console.log(this.assessments);
+
       this.assessments.forEach(
         (element: {
           createdAt: moment.MomentInput;
@@ -38,8 +40,15 @@ export class ListingComponent implements OnInit {
           element.title = element.title ? element.title : 'Practice';
         }
       );
-
+      this.assessments = this.assessments.filter(
+        (e: any) => e.questionsPool.length != 0
+      );
+      let newassment: any = this.assessments.filter(
+        (e: any) => e.quizSubmissions.length != 0
+      );
+      console.log(newassment);
       this.filteredAssessments = this.assessments;
+      console.log(this.filteredAssessments);
       this.loading = false;
     });
   }

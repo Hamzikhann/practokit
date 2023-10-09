@@ -78,6 +78,7 @@ export class AttemptComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.quizId = this.activatedRoute.snapshot.paramMap.get('quizId');
+    console.log(this.quizId);
     this.getQuizDetail();
   }
 
@@ -94,6 +95,7 @@ export class AttemptComponent implements OnInit {
         });
     } else {
       this.quizService.getQuizDetail(this.quizId).subscribe((quiz) => {
+        console.log(quiz);
         if (!quiz) {
           this.router.navigate(['/builder']);
         } else {
