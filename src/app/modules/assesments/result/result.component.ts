@@ -23,6 +23,7 @@ export class ResultComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
     this.quizId = this.activatedRoute.snapshot.paramMap.get('quizId');
+    console.log(this.quizId);
     this.getQuizResult();
   }
 
