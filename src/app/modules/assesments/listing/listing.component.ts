@@ -43,10 +43,11 @@ export class ListingComponent implements OnInit {
       this.assessments = this.assessments.filter(
         (e: any) => e.questionsPool.length != 0
       );
-      // let newassment: any = this.assessments.filter(
-      //   (e: any) => e.quizSubmissions.length != 0
-      // );
-      // console.log(newassment);
+
+      this.assessments.forEach((e: any, index: any) =>
+        console.log(e.quizSubmissions[0]?.userId == this.currentUser.id)
+      );
+
       this.filteredAssessments = this.assessments;
       console.log(this.filteredAssessments);
       this.loading = false;
