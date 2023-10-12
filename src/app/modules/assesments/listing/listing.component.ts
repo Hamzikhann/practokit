@@ -25,7 +25,7 @@ export class ListingComponent implements OnInit {
     // console.log(this.currentUser.id);
     this.assessmentService.getAssessments().subscribe((res) => {
       this.assessments = res.body;
-      console.log(this.assessments);
+      // console.log(this.assessments);
 
       this.assessments.forEach(
         (element: {
@@ -44,9 +44,11 @@ export class ListingComponent implements OnInit {
         (e: any) => e.questionsPool.length != 0
       );
 
-      this.assessments.forEach((e: any, index: any) =>
-        console.log(e.quizSubmissions[0]?.userId == this.currentUser.id)
-      );
+      this.assessments.forEach((e: any, index: any) => {
+        e.status =
+          e.quizSubmissions[0]?.userId == this.currentUser.id ? true : false;
+        console.log(e.quizSubmissions[0]?.userId == this.currentUser.id);
+      });
 
       this.filteredAssessments = this.assessments;
       console.log(this.filteredAssessments);

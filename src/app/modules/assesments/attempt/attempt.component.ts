@@ -119,6 +119,7 @@ export class AttemptComponent implements OnInit {
   }
 
   async setQuestions(questionsPool: any[]) {
+    console.log(this.questions.length);
     await questionsPool.forEach((element) => {
       this.questions.push({
         id: element.id,

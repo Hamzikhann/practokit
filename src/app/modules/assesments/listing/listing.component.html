@@ -64,35 +64,19 @@
                                                     {{assessment.user?.lastName? assessment.user.lastName : ''}}
                                                 </td>
                                                 <td class="align-middle actions">
-                                                    <a *ngIf="assessment.quizSubmissions.length == 0"
-                                                        class="primary edit"
+                                                    <a *ngIf="!assessment.status" class="primary edit"
                                                         [routerLink]="['/assessments/attempt', assessment.id]"
                                                         data-toggle="tooltip" title="Attempt">
                                                         <i class="fa fa-pencil"></i>
                                                     </a>
-                                                    <!-- <a *ngIf="assessment.quizSubmissions[0]?.userid != currentUser.id"
-                                                        class="primary edit"
-                                                        [routerLink]="['/assessments/attempt', assessment.id]"
-                                                        data-toggle="tooltip" title="Attempt">
-                                                        <i class="fa fa-pencil"></i>
-                                                    </a> -->
-                                                    <!-- <a *ngIf="assessment.quizSubmissions.length != 0 && (assessment.quizSubmissions.userid==currentUser.id || assessment.quizSubmissions.user.id==currentUser.id)   "
-                                                        class="primary edit"
-                                                        [routerLink]="['/assessments/attempt', assessment.id]"
-                                                        data-toggle="tooltip" title="Attempt">
-                                                        <i class="fa fa-pencil"></i>
-                                                    </a> -->
-                                                    <a *ngIf="assessment.quizSubmissions.length != 0"
+
+                                                    <a *ngIf="assessment.status"
                                                         [routerLink]="['/assessments/submissions/result/', assessment.id]"
                                                         data-toggle="tooltip" title="View Result">
                                                         <i class="fa fa-eye"></i>
                                                     </a>
 
-                                                    <!-- <a *ngIf="assessment.quizSubmissions[0]?.userid == currentUser.id "
-                                                        [routerLink]="['/assessments/submissions/result/', assessment.id]"
-                                                        data-toggle="tooltip" title="View Result">
-                                                        <i class="fa fa-eye"></i>
-                                                    </a> -->
+
                                                 </td>
                                             </tr>
                                         </tbody>
