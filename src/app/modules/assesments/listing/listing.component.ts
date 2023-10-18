@@ -45,9 +45,18 @@ export class ListingComponent implements OnInit {
       );
 
       this.assessments.forEach((e: any, index: any) => {
-        e.status =
-          e.quizSubmissions[0]?.userId == this.currentUser.id ? true : false;
+        // e.status =
+        //   e.quizSubmissions[0]?.userId == this.currentUser.id ? true : false;
         console.log(e.quizSubmissions[0]?.userId == this.currentUser.id);
+      });
+      this.assessments.forEach((e: any, index: any) => {
+        // e.status =
+        //   e.quizSubmissions[0]?.userId == this.currentUser.id ? true : false;
+        // console.log(e.quizSubmissions[0]?.userId == this.currentUser.id);
+        e.quizSubmissions.forEach((s: any) => {
+          console.log(s?.userId == this.currentUser.id);
+          e.status = s?.userId == this.currentUser.id;
+        });
       });
 
       this.filteredAssessments = this.assessments;
